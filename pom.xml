@@ -27,7 +27,7 @@
     <webjars-jquery.version>2.2.4</webjars-jquery.version>
     <wro4j.version>1.8.0</wro4j.version>
 
-    <jacoco.version>0.8.5</jacoco.version>
+    <jacoco.version>0.8.6</jacoco.version>
     <nohttp-checkstyle.version>0.0.4.RELEASE</nohttp-checkstyle.version>
     <spring-format.version>0.0.25</spring-format.version>
   </properties>
@@ -123,53 +123,6 @@
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>io.spring.javaformat</groupId>
-        <artifactId>spring-javaformat-maven-plugin</artifactId>
-        <version>${spring-format.version}</version>
-        <executions>
-          <execution>
-            <phase>validate</phase>
-            <goals>
-              <goal>validate</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>3.1.1</version>
-        <dependencies>
-          <dependency>
-            <groupId>com.puppycrawl.tools</groupId>
-            <artifactId>checkstyle</artifactId>
-            <version>8.32</version>
-          </dependency>
-          <dependency>
-            <groupId>io.spring.nohttp</groupId>
-            <artifactId>nohttp-checkstyle</artifactId>
-            <version>${nohttp-checkstyle.version}</version>
-          </dependency>
-        </dependencies>
-        <executions>
-          <execution>
-            <id>nohttp-checkstyle-validation</id>
-            <phase>validate</phase>
-            <configuration>
-              <configLocation>src/checkstyle/nohttp-checkstyle.xml</configLocation>
-              <suppressionsLocation>src/checkstyle/nohttp-checkstyle-suppressions.xml</suppressionsLocation>
-              <encoding>UTF-8</encoding>
-              <sourceDirectories>${basedir}</sourceDirectories>
-              <includes>**/*</includes>
-              <excludes>**/.git/**/*,**/.idea/**/*,**/target/**/,**/.flattened-pom.xml,**/*.class</excludes>
-            </configuration>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
@@ -278,41 +231,66 @@
   </licenses>
 
   <repositories>
-    <repository>
+    <!-- <repository>
       <id>spring-snapshots</id>
       <name>Spring Snapshots</name>
       <url>https://repo.spring.io/snapshot</url>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
-    </repository>
-    <repository>
+    </repository> -->
+    <!-- <repository>
       <id>spring-milestones</id>
       <name>Spring Milestones</name>
       <url>https://repo.spring.io/milestone</url>
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
-    </repository>
+    </repository> -->
+    <repository>
+            <id>aliyun</id>
+            <name>aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
   </repositories>
 
   <pluginRepositories>
-    <pluginRepository>
+    <!-- <pluginRepository>
       <id>spring-snapshots</id>
       <name>Spring Snapshots</name>
       <url>https://repo.spring.io/snapshot</url>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
-    </pluginRepository>
-    <pluginRepository>
+    </pluginRepository> -->
+    <!-- <pluginRepository>
       <id>spring-milestones</id>
       <name>Spring Milestones</name>
       <url>https://repo.spring.io/milestone</url>
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
-    </pluginRepository>
+    </pluginRepository> -->
+    <pluginRepository>
+        <id>aliyun</id>
+        <name>aliyun</name>
+         <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+          <releases>
+             <enabled>true</enabled>
+          </releases>
+          <snapshots>
+             <enabled>false</enabled>
+          </snapshots>
+     </pluginRepository>
   </pluginRepositories>
 
   <profiles>
